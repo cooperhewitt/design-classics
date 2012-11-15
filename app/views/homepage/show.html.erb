@@ -1,0 +1,9 @@
+
+
+<h1><%= @response["object"]["title"] %></h1>
+
+<% if @response["object"]["images"].size > 0 %>
+  <%= image_tag(@response["object"]["images"].first["n"]["url"])%>
+<% end %>
+
+<p><%= @response["object"]["description"] %></p
