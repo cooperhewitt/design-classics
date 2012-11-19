@@ -3,9 +3,11 @@ development:
   database: design_classics
   host: localhost
   min_messages: warning
+  username: frankie
 
 test:
   adapter: postgresql
   database: design_classics
   host: localhost
   min_messages: warning
+  username: frankie
