@@ -58,5 +58,9 @@ module Cooperhewitt
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Use STDOUT as a Logger (required by Unicorn on Heroku)
+    config.logger = Logger.new(STDOUT)
+
   end
 end

@@ -1,9 +1,23 @@
 
+<article>
+  <h1>The Cooper-Hewitt Collection of Design Things</h1>
 
-<h1><%= @response["object"]["title"] %></h1>
+  <div class="intro call-to-action">Show me the 3 classic
 
-<% if @response["object"]["images"] && @response["object"]["images"].size > 0 %>
-  <%= image_tag(@response["object"]["images"].first["n"]["url"])%>
-<% end %>
+  <form method="GET" action="<%= search_path %>">
+    <%= text_field_tag :q, '', :placeholder => 'teapots' %>
+  </form>
+  .
+  </div>
 
-<p><%= @response["object"]["description"] %></p>
+  <p>Examples:
+
+    <% example_links = [] %>
+
+    <% @example_types.each do |type_of_thing| %>
+      <% example_links << link_to(type_of_thing.name.pluralize, type_of_thing_path(type_of_thing.name.pluralize.downcase)) %>
+    <% end %>
+    <%= example_links.to_sentence.html_safe %>
+  </p>
+
+</article>

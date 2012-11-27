@@ -1,0 +1,61 @@
+
+<%= link_to "Back", root_path, :class => 'button' %>
+
+<% if @classic_things.size > 0 %>
+
+  <article>
+    <h1>The 3 classic <span class="name"><%= @type_of_thing.name.pluralize %></span></h1>
+
+    <div class="things">
+
+      <% @classic_things.each do |thing| %>
+
+        <div class="thing">
+          <%= link_to image_tag(thing.image), thing.ch_link %>
+
+          <p><%= link_to thing.name, "https://collection.cooperhewitt.org/objects/#{thing.ch_id}/" %></p>
+
+          <form action="<%= votes_path %>" method="POST">
+            <%= hidden_field_tag 'thing_id', thing.id %>
+            <%= hidden_field_tag 'vote', 'down' %>
+            <button>This isn't that classic!</button>
+          </form>
+
+        </div>
+      <% end %>
+    </div>
+
+    <% if @other_things %>
+
+      <h2>The other <span class="name"><%= @type_of_thing.name.pluralize %></span></h2>
+
+      <div class="other-things">
+
+        <% @other_things.each do |thing| %>
+
+          <div class="thing">
+            <%= link_to image_tag(thing.image), thing.ch_link %>
+
+            <p><%= link_to thing.name, "https://collection.cooperhewitt.org/objects/#{thing.ch_id}/" %></p>
+
+            <form action="<%= votes_path %>" method="POST">
+              <%= hidden_field_tag 'thing_id', thing.id %>
+              <%= hidden_field_tag 'vote', 'up' %>
+              <button>This is more classic!</button>
+            </form>
+
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </article>
+
+<% else %>
+
+  <article>
+    <h1>Darn, the Cooper-Hewitt has some <span class="name"><%= @type_of_thing.name.pluralize %></span>, but it hasn't take any photos of them yet.</h2>
+
+    <p class="intro call-to-action">Why not bug them about that?</p>
+  </article>
+
+<% end %>
