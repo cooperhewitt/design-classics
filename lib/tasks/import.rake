@@ -67,7 +67,7 @@ namespace :import do
   desc "import images from GitHub"
   task :object_images_from_github => :environment do |t, args|
 
-    Thing.where(:image => nil).order('id DESC').find_each do |thing|
+    Thing.where(:image => nil).order('id DESC').all.each do |thing|
 
       id_s = thing.ch_id.to_s
 
