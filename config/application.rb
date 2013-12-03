@@ -62,5 +62,10 @@ module Cooperhewitt
     # Use STDOUT as a Logger (required by Unicorn on Heroku)
     config.logger = Logger.new(STDOUT)
 
+    # Setting secret token
+    config.secret_token = ENV['SECRET_TOKEN']
+    config.secret_key_base = ENV['SECRET_KEY_BASE']
+    
+
   end
 end

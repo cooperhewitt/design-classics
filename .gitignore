@@ -10,6 +10,8 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
+.env
+
 # Ignore the database config
 /config/database.yml
 
